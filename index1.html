@@ -12,225 +12,167 @@
         .font-cursive { font-family: 'Pacifico', cursive; }
         .font-romantic { font-family: 'Great Vibes', cursive; }
         
-        /* Layout Styling */
+        /* Password Overlay */
+        #passwordOverlay {
+            position: fixed; inset: 0; background: white; z-index: 9999;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+
         .page { display: none; height: 100vh; width: 100vw; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; background-color: white; border: 10px solid white; outline: 2px dashed #f472b6; outline-offset: -20px; }
         .active { display: flex; }
 
-        /* Page 5 (Happy New Year) */
         #page5 { background: radial-gradient(circle, #2d0a1a 0%, #000000 100%) !important; }
-        .romantic-text {
-            color: #ffb7c5;
-            text-shadow: 0 0 10px #f472b6, 0 0 20px #f472b6;
-            animation: pulseGlow 2s ease-in-out infinite alternate;
-        }
-        @keyframes pulseGlow {
-            from { text-shadow: 0 0 10px #f472b6, 0 0 20px #f472b6; }
-            to { text-shadow: 0 0 15px #ff1493, 0 0 30px #ff1493, 0 0 40px #ff1493; }
-        }
+        .romantic-text { color: #ffb7c5; text-shadow: 0 0 10px #f472b6, 0 0 20px #f472b6; animation: pulseGlow 2s ease-in-out infinite alternate; }
+        @keyframes pulseGlow { from { text-shadow: 0 0 10px #f472b6; } to { text-shadow: 0 0 30px #ff1493; } }
 
-        /* Rose Petal Effect */
-        .petal {
-            position: absolute; background-color: #ff4d6d; border-radius: 150% 0 150% 0;
-            opacity: 0.3; pointer-events: none; animation: petalFall 7s linear infinite;
-        }
-        @keyframes petalFall {
-            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-        }
+        .petal { position: absolute; background-color: #ff4d6d; border-radius: 150% 0 150% 0; opacity: 0.3; pointer-events: none; animation: petalFall 7s linear infinite; }
+        @keyframes petalFall { 0% { transform: translateY(-10vh) rotate(0deg); } 100% { transform: translateY(110vh) rotate(360deg); } }
 
-        /* Gifts Page Styling */
         #page6 { background: linear-gradient(180deg, #fff1f2 0%, #ffe4e6 100%); }
-        .gift-container {
-            position: relative;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 40px;
-            backdrop-filter: blur(5px);
-            border: 2px solid rgba(244, 114, 182, 0.2);
-        }
-        .gift-item { 
-            font-size: 5.5rem; 
-            animation: floating 2.5s ease-in-out infinite; 
-            cursor: pointer; transition: 0.4s; 
-            filter: drop-shadow(0 10px 15px rgba(244, 114, 182, 0.3));
-            position: relative;
-        }
+        .gift-container { position: relative; padding: 30px; background: rgba(255, 255, 255, 0.4); border-radius: 40px; backdrop-filter: blur(5px); border: 2px solid rgba(244, 114, 182, 0.2); }
+        .gift-item { font-size: 5.5rem; animation: floating 2.5s ease-in-out infinite; cursor: pointer; transition: 0.4s; filter: drop-shadow(0 10px 15px rgba(244, 114, 182, 0.3)); position: relative; }
         .gift-item:hover { transform: scale(1.1) rotate(3deg); }
-        .gift-item::after {
-            content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 100px; height: 100px; background: radial-gradient(circle, rgba(244,114,182,0.3) 0%, transparent 70%);
-            z-index: -1; border-radius: 50%;
-        }
-
+        .gift-item::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 100px; background: radial-gradient(circle, rgba(244,114,182,0.3) 0%, transparent 70%); z-index: -1; border-radius: 50%; }
         @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-        /* Buttons */
-        .btn-pink { background-color: #f472b6; color: white; font-weight: bold; border-radius: 9999px; padding: 10px 45px; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 10; cursor: pointer; border: none; }
-        .btn-pink:hover { transform: scale(1.05); background-color: #ec4899; }
+        .btn-pink { background-color: #f472b6; color: white; font-weight: bold; border-radius: 9999px; padding: 10px 45px; cursor: pointer; border: none; z-index: 10; transition: transform 0.2s; }
+        .btn-pink:hover { transform: scale(1.05); }
 
-        /* Vinyl & Photos */
-        .vinyl { border-radius: 50%; background: #111; border: 8px solid #222; animation: spin 6s linear infinite; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+        .vinyl { border-radius: 50%; background: #111; border: 8px solid #222; animation: spin 6s linear infinite; display: flex; align-items: center; justify-content: center; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         .photo-card { transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
-
         .floating-sparkle { position: absolute; pointer-events: none; animation: floatUp 6s linear infinite; opacity: 0.5; }
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-        }
+        @keyframes floatUp { 0% { transform: translateY(100vh); opacity: 0; } 100% { transform: translateY(-10vh); opacity: 0; } }
     </style>
 </head>
-<body>
+<body onload="askPassword()">
 
-    <div id="page1" class="page active">
-        <h2 class="text-3xl font-bold text-gray-700 mb-4">open when its</h2>
-        <div class="flex gap-6 mb-8 text-pink-600 font-bold text-5xl">
-            <div><span id="days">00</span><p class="text-sm uppercase text-gray-400 font-bold">Days</p></div>
-            <div><span id="hours">00</span><p class="text-sm uppercase text-gray-400 font-bold">Hours</p></div>
-            <div><span id="mins">00</span><p class="text-sm uppercase text-gray-400 font-bold">Mins</p></div>
-            <div><span id="secs">00</span><p class="text-sm uppercase text-gray-400 font-bold">Secs</p></div>
+    <div id="passwordOverlay">
+        <h2 class="text-2xl font-bold text-pink-600 mb-4">Enter Secret Code</h2>
+        <input type="password" id="passInput" class="border-2 border-pink-300 rounded-full px-4 py-2 mb-4 text-center outline-none focus:border-pink-500">
+        <button onclick="checkPassword()" class="btn-pink">UNLOCK</button>
+        <p id="passError" class="text-red-500 mt-2 hidden">Wrong code, try again! ❤️</p>
+    </div>
+
+    <div id="mainContent" style="display:none;">
+        <div id="page1" class="page active">
+            <h2 class="text-3xl font-bold text-gray-700 mb-4">open when its</h2>
+            <div class="flex gap-6 mb-8 text-pink-600 font-bold text-5xl">
+                <div><span id="days">00</span><p class="text-sm uppercase text-gray-400 font-bold">Days</p></div>
+                <div><span id="hours">00</span><p class="text-sm uppercase text-gray-400 font-bold">Hours</p></div>
+                <div><span id="mins">00</span><p class="text-sm uppercase text-gray-400 font-bold">Mins</p></div>
+                <div><span id="secs">00</span><p class="text-sm uppercase text-gray-400 font-bold">Secs</p></div>
+            </div>
+            <h1 class="text-7xl font-romantic text-pink-500 mb-10">New Year</h1>
+            <img src="s4.jpeg" class="absolute bottom-8 right-5 w-64 rounded-3xl shadow-2xl animate-bounce">
+            <button onclick="showPage('page2')" class="btn-pink text-xl px-16 py-4">NEXT</button>
         </div>
-        <h1 class="text-7xl font-romantic text-pink-500 mb-10">New Year</h1>
-        <img src="s4.jpeg" class="absolute bottom-8 right-5 w-64 rounded-3xl shadow-2xl animate-bounce">
-        
-        <button onclick="checkNewYear()" class="btn-pink text-xl px-16 py-4">NEXT</button>
-    </div>
 
-    <div id="page2" class="page">
-        <img src="s3.jpeg" class="w-72 h-72 object-cover mb-8 rounded-full border-8 border-white shadow-2xl z-10">
-        <h1 class="text-7xl font-cursive text-pink-600 mb-4 z-10">Hi Aviii!</h1>
-        <p class="text-3xl font-bold text-gray-700 mb-12 italic z-10">i got a surprise for you</p>
-        <div class="flex gap-8 z-10">
-            <button onclick="showPage('page4')" class="btn-pink text-2xl px-16 py-4">YES</button>
-            <button id="noBtn" onmouseover="moveNo()" onclick="showPage('page3')" class="btn-pink bg-pink-300 text-2xl px-16 py-4">NO</button>
-        </div>
-    </div>
-
-    <div id="page3" class="page">
-        <img src="s2.jpeg" class="w-80 h-80 object-cover mb-10 rounded-2xl border-8 border-white shadow-2xl z-10">
-        <h1 class="text-7xl font-bold text-red-600 mb-12 uppercase z-10">How dare you!</h1>
-        <button onclick="showPage('page2')" class="btn-pink bg-gray-700 text-xl px-12 py-4 z-10">TRY AGAIN</button>
-    </div>
-
-    <div id="page4" class="page">
-        <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="floating-sparkle" style="left:15%; color:#f472b6;">✨</div>
-            <div class="floating-sparkle" style="left:80%; color:#f472b6;">✨</div>
-        </div>
-        <img src="s1.jpeg" class="w-80 h-80 object-cover mb-10 rounded-3xl border-8 border-white shadow-2xl z-10 animate-pulse">
-        <h1 class="text-7xl font-cursive text-pink-600 mb-12 z-10">Are you ready?</h1>
-        <button onclick="triggerRomanticFirecrackers()" class="btn-pink text-2xl px-20 py-5 shadow-2xl z-10">YES, SHOW ME!</button>
-    </div>
-
-    <div id="page5" class="page">
-        <div id="petals-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
-        <canvas id="fw-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-1"></canvas>
-        <h1 class="text-7xl font-romantic romantic-text mb-4 z-10">Happy New Year</h1>
-        <h1 class="text-6xl font-romantic romantic-text mb-12 z-10">My Love</h1>
-        <button onclick="showPage('page6')" class="btn-pink z-10">NEXT</button>
-    </div>
-
-    <div id="page6" class="page">
-        <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="floating-sparkle" style="left:10%; top:20%; font-size: 2rem;">💖</div>
-            <div class="floating-sparkle" style="left:85%; top:15%; font-size: 1.5rem;">✨</div>
-        </div>
-        <h1 class="text-5xl font-romantic text-pink-600 mb-12 drop-shadow-md z-10">Gifts for my Favorite Person</h1>
-        <div class="gift-container z-10">
-            <div class="grid grid-cols-2 gap-12">
-                <div class="gift-item" onclick="showPage('page-letter')">✉️</div>
-                <div class="gift-item" onclick="showPage('page-flowers')">🌹</div>
-                <div class="gift-item" onclick="showPage('page-camera')">📷</div>
-                <div class="gift-item" onclick="showPage('page-music')">🎶</div>
+        <div id="page2" class="page">
+            <img src="s3.jpeg" class="w-72 h-72 object-cover mb-8 rounded-full border-8 border-white shadow-2xl z-10">
+            <h1 class="text-7xl font-cursive text-pink-600 mb-4 z-10">Hi Aviii!</h1>
+            <p class="text-3xl font-bold text-gray-700 mb-12 italic z-10">i got a surprise for you</p>
+            <div class="flex gap-8 z-10">
+                <button onclick="showPage('page4')" class="btn-pink text-2xl px-16 py-4">YES</button>
+                <button id="noBtn" onmouseover="moveNo()" onclick="showPage('page3')" class="btn-pink bg-pink-300 text-2xl px-16 py-4">NO</button>
             </div>
         </div>
-        <button onclick="showPage('page5')" class="btn-pink mt-12 px-10 py-3 uppercase tracking-widest text-xs font-bold shadow-lg z-10">BACK TO WISHES</button>
-    </div>
 
-    <div id="page-letter" class="page" style="background: url('a1.jpeg') no-repeat center center/cover;">
-        <div class="bg-white/40 backdrop-blur-md p-10 rounded-[40px] shadow-2xl max-w-[85%] border border-white/50">
-            <h2 class="text-5xl font-cursive text-pink-600 mb-6">My Dearest Aviii,</h2>
-            <p class="text-2xl text-gray-800 font-medium leading-relaxed italic mb-10" style="font-family: 'Pacifico', cursive;">"Every moment spent with you feels like a beautiful dream come true. Let's make 2026 our most magical year yet!"</p>
-            <button onclick="showPage('page6')" class="btn-pink">BACK</button>
+        <div id="page3" class="page">
+            <img src="s2.jpeg" class="w-80 h-80 object-cover mb-10 rounded-2xl border-8 border-white shadow-2xl z-10">
+            <h1 class="text-7xl font-bold text-red-600 mb-12 uppercase z-10">How dare you!</h1>
+            <button onclick="showPage('page2')" class="btn-pink bg-gray-700 text-xl px-12 py-4 z-10">TRY AGAIN</button>
         </div>
-    </div>
 
-    <div id="page-flowers" class="page" style="background-color: #fff5f7; border: none;">
-        <div class="flex flex-row items-center justify-between w-full h-full">
-            <div class="flex-1 text-left px-16 z-10">
-                <p class="text-pink-500 italic mb-12" style="font-family: 'Pacifico', cursive; font-size: 1.8rem;">I'm sending you this virtual bouquet until I can hand you real ones myself.</p>
+        <div id="page4" class="page">
+            <img src="s1.jpeg" class="w-80 h-80 object-cover mb-10 rounded-3xl border-8 border-white shadow-2xl z-10 animate-pulse">
+            <h1 class="text-7xl font-cursive text-pink-600 mb-12 z-10">Are you ready?</h1>
+            <button onclick="triggerRomanticFirecrackers()" class="btn-pink text-2xl px-20 py-5 shadow-2xl z-10">YES, SHOW ME!</button>
+        </div>
+
+        <div id="page5" class="page">
+            <div id="petals-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
+            <canvas id="fw-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-1"></canvas>
+            <h1 class="text-7xl font-romantic romantic-text mb-4 z-10">Happy New Year</h1>
+            <h1 class="text-6xl font-romantic romantic-text mb-12 z-10">My Love</h1>
+            <button onclick="showPage('page6')" class="btn-pink z-10">NEXT</button>
+        </div>
+
+        <div id="page6" class="page">
+            <h1 class="text-5xl font-romantic text-pink-600 mb-12 z-10">Gifts for my Favorite Person</h1>
+            <div class="gift-container z-10">
+                <div class="grid grid-cols-2 gap-12">
+                    <div class="gift-item" onclick="showPage('page-letter')">✉️</div>
+                    <div class="gift-item" onclick="showPage('page-flowers')">🌹</div>
+                    <div class="gift-item" onclick="showPage('page-camera')">📷</div>
+                    <div class="gift-item" onclick="showPage('page-music')">🎶</div>
+                </div>
+            </div>
+            <button onclick="showPage('page5')" class="btn-pink mt-12 px-10 py-3 uppercase tracking-widest text-xs font-bold shadow-lg z-10">BACK TO WISHES</button>
+        </div>
+
+        <div id="page-letter" class="page" style="background: url('a1.jpeg') no-repeat center center/cover;">
+            <div class="bg-white/40 backdrop-blur-md p-10 rounded-[40px] shadow-2xl max-w-[85%] border border-white/50">
+                <h2 class="text-5xl font-cursive text-pink-600 mb-6">My Dearest Aviii,</h2>
+                <p class="text-2xl text-gray-800 font-medium leading-relaxed italic mb-10" style="font-family: 'Pacifico', cursive;">"Every moment spent with you feels like a beautiful dream come true. Let's make 2026 our most magical year yet!"</p>
                 <button onclick="showPage('page6')" class="btn-pink">BACK</button>
             </div>
-            <div class="flex-1 flex justify-end items-center h-full">
-                <img src="f1.jpg" class="w-full max-w-[380px] shadow-2xl" style="border-radius: 80px 0 0 80px; border: 12px solid white;">
+        </div>
+
+        <div id="page-flowers" class="page" style="background-color: #fff5f7; border: none;">
+            <div class="flex flex-row items-center justify-between w-full h-full">
+                <div class="flex-1 text-left px-16 z-10"><p class="text-pink-500 italic mb-12" style="font-family: 'Pacifico', cursive; font-size: 1.8rem;">I'm sending you this virtual bouquet until I can hand you real ones myself.</p><button onclick="showPage('page6')" class="btn-pink">BACK</button></div>
+                <div class="flex-1 flex justify-end items-center h-full"><img src="f1.jpg" class="w-full max-w-[380px] shadow-2xl" style="border-radius: 80px 0 0 80px; border: 12px solid white;"></div>
             </div>
         </div>
-    </div>
 
-    <div id="page-camera" class="page" style="background-color: #e0f2fe; border: none;">
-        <div class="relative w-full h-full flex flex-col items-center justify-center">
-            <div id="photoStack" class="relative w-72 h-80 mb-12 cursor-pointer group" onclick="this.classList.toggle('open')">
-                <p class="absolute -top-16 left-0 w-full text-blue-500 font-bold text-sm uppercase animate-bounce">Click to see! 👇</p>
-                <div class="photo-card absolute inset-0 bg-white p-2 shadow-lg border rotate-[-12deg] group-[.open]:rotate-[-25deg] group-[.open]:-translate-x-32 group-[.open]:-translate-y-10"><img src="i3.jpeg" class="w-full h-full object-cover"></div>
-                <div class="photo-card absolute inset-0 bg-white p-2 shadow-xl border rotate-[8deg] group-[.open]:rotate-[20deg] group-[.open]:translate-x-32 group-[.open]:-translate-y-10"><img src="i2.jpeg" class="w-full h-full object-cover"></div>
-                <div class="photo-card absolute inset-0 bg-white p-2 shadow-2xl border rotate-[-2deg] z-20 group-[.open]:translate-y-24 group-[.open]:scale-110"><img src="i1.jpeg" class="w-full h-full object-cover"></div>
+        <div id="page-camera" class="page" style="background-color: #e0f2fe; border: none;">
+            <div class="relative w-full h-full flex flex-col items-center justify-center">
+                <div id="photoStack" class="relative w-72 h-80 mb-12 cursor-pointer group" onclick="this.classList.toggle('open')">
+                    <p class="absolute -top-16 left-0 w-full text-blue-500 font-bold text-sm uppercase animate-bounce">Click to see! 👇</p>
+                    <div class="photo-card absolute inset-0 bg-white p-2 shadow-lg border rotate-[-12deg] group-[.open]:rotate-[-25deg] group-[.open]:-translate-x-32 group-[.open]:-translate-y-10"><img src="i3.jpeg" class="w-full h-full object-cover"></div>
+                    <div class="photo-card absolute inset-0 bg-white p-2 shadow-xl border rotate-[8deg] group-[.open]:rotate-[20deg] group-[.open]:translate-x-32 group-[.open]:-translate-y-10"><img src="i2.jpeg" class="w-full h-full object-cover"></div>
+                    <div class="photo-card absolute inset-0 bg-white p-2 shadow-2xl border rotate-[-2deg] z-20 group-[.open]:translate-y-24 group-[.open]:scale-110"><img src="i1.jpeg" class="w-full h-full object-cover"></div>
+                </div>
+                <h2 class="text-5xl font-cursive text-blue-600 mb-2">Our Best Moments!</h2>
+                <p class="text-xl text-blue-400 font-medium mb-8 italic">Your memory cuz we dont have picture together 😔</p>
+                <button onclick="showPage('page6')" class="btn-pink bg-blue-500">BACK</button>
             </div>
-            <h2 class="text-5xl font-cursive text-blue-600 mb-2">Our Best Moments!</h2>
-            <p class="text-xl text-blue-400 font-medium mb-8 italic">Your memory cuz we dont have picture together 😔</p>
-            <button onclick="showPage('page6')" class="btn-pink bg-blue-500">BACK</button>
         </div>
-    </div>
 
-    <div id="page-music" class="page" style="background: linear-gradient(to bottom, #fff5f7, #fdf2f8); border: none;">
-        <audio id="myAudio" src="song.mp3" loop></audio>
-        <div class="flex flex-row items-center justify-center w-full max-w-6xl px-10 gap-20">
-            <div class="relative bg-white shadow-2xl rounded-sm border-8 border-white p-4">
-                <div id="vinylRecord" class="vinyl w-[440px] h-[440px] relative">
-                    <svg class="absolute inset-0 w-full h-full z-40" viewBox="0 0 200 200">
-                        <path id="curveTop" d="M 25, 100 a 75,75 0 1,1 150,0" fill="transparent" />
-                        <path id="curveBottom" d="M 25, 100 a 75,75 0 1,0 150,0" fill="transparent" />
-                        <text class="fill-pink-400 font-bold tracking-widest uppercase" style="font-size: 10px;">
-                            <textPath href="#curveTop" startOffset="50%" text-anchor="middle">Love of dreams</textPath>
-                        </text>
-                        <text class="fill-pink-400 font-bold tracking-widest uppercase" style="font-size: 10px;">
-                            <textPath href="#curveBottom" startOffset="50%" text-anchor="middle">But better You're real</textPath>
-                        </text>
-                    </svg>
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="w-60 h-60 rounded-full border-4 border-black bg-cover bg-center z-30" style="background-image: url('i1.jpeg');"></div>
+        <div id="page-music" class="page" style="background: linear-gradient(to bottom, #fff5f7, #fdf2f8); border: none;">
+            <audio id="myAudio" src="song.mp3" loop></audio>
+            <div class="flex flex-row items-center justify-center w-full max-w-6xl px-10 gap-20">
+                <div class="relative bg-white shadow-2xl rounded-sm border-8 border-white p-4">
+                    <div id="vinylRecord" class="vinyl w-[440px] h-[440px] relative">
+                        <svg class="absolute inset-0 w-full h-full z-40" viewBox="0 0 200 200">
+                            <path id="curveTop" d="M 25, 100 a 75,75 0 1,1 150,0" fill="transparent" />
+                            <path id="curveBottom" d="M 25, 100 a 75,75 0 1,0 150,0" fill="transparent" />
+                            <text class="fill-pink-400 font-bold tracking-widest uppercase" style="font-size: 10px;"><textPath href="#curveTop" startOffset="50%" text-anchor="middle">Love of dreams</textPath></text>
+                            <text class="fill-pink-400 font-bold tracking-widest uppercase" style="font-size: 10px;"><textPath href="#curveBottom" startOffset="50%" text-anchor="middle">But better You're real</textPath></text>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center"><div class="w-60 h-60 rounded-full border-4 border-black bg-cover bg-center z-30" style="background-image: url('i1.jpeg');"></div></div>
                     </div>
                 </div>
-            </div>
-            <div class="flex-1 text-left flex flex-col justify-center">
-                <h2 class="text-7xl font-romantic text-pink-600 mb-2">Tum Nazar Mein Raho</h2>
-                <div class="w-full max-w-md mt-8">
-                    <div class="flex justify-between text-sm text-pink-400 font-cursive mb-3">
-                        <span id="currentTime">0:00</span>
-                        <span id="durationTime">0:00</span>
-                    </div>
-                    <div class="w-full bg-pink-100 h-2 rounded-full overflow-hidden">
-                        <div id="progressLine" class="bg-pink-500 h-full w-0 transition-all duration-100"></div>
-                    </div>
+                <div class="flex-1 text-left flex flex-col justify-center">
+                    <h2 class="text-7xl font-romantic text-pink-600 mb-2">Tum Nazar Mein Raho</h2>
+                    <div class="w-full max-w-md mt-8"><div class="flex justify-between text-sm text-pink-400 font-cursive mb-3"><span id="currentTime">0:00</span><span id="durationTime">0:00</span></div><div class="w-full bg-pink-100 h-2 rounded-full overflow-hidden"><div id="progressLine" class="bg-pink-500 h-full w-0 transition-all duration-100"></div></div></div>
+                    <div class="flex items-center gap-12 mt-12"><button onclick="toggleMusic()" class="w-28 h-28 bg-pink-500 rounded-full text-white text-4xl flex items-center justify-center shadow-xl"><span id="playIcon" class="ml-2">▶</span></button></div>
+                    <button onclick="showPage('page6')" class="mt-16 text-pink-400 font-bold text-xs uppercase tracking-widest">← Back to Gifts</button>
                 </div>
-                <div class="flex items-center gap-12 mt-12">
-                    <button onclick="toggleMusic()" class="w-28 h-28 bg-pink-500 rounded-full text-white text-4xl flex items-center justify-center shadow-xl"><span id="playIcon" class="ml-2">▶</span></button>
-                </div>
-                <button onclick="showPage('page6')" class="mt-16 text-pink-400 font-bold text-xs uppercase tracking-widest">← Back to Gifts</button>
             </div>
         </div>
     </div>
 
     <script>
-        // NEW YEAR LOCK LOGIC
-        function checkNewYear() {
-            const now = new Date();
-            const year = now.getFullYear();
-            
-            // If the year is 2026 or later, allow entry
-            if (year >= 2026) {
-                showPage('page2');
+        // PASSWORD LOGIC
+        function checkPassword() {
+            const pass = document.getElementById('passInput').value;
+            if (pass.toLowerCase() === 'love2026') {
+                document.getElementById('passwordOverlay').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
             } else {
-                alert("Patience, my love! You can only open this on New Year's Day! ❤️");
+                document.getElementById('passError').classList.remove('hidden');
             }
         }
 
@@ -255,17 +197,8 @@
                     this.friction = 0.95; this.gravity = 0.1;
                     this.alpha = 1; this.decay = Math.random() * 0.01 + 0.005;
                 }
-                draw() {
-                    ctx.globalAlpha = this.alpha;
-                    ctx.fillStyle = this.color;
-                    ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
-                }
-                update() {
-                    this.speed *= this.friction;
-                    this.x += Math.cos(this.angle) * this.speed;
-                    this.y += Math.sin(this.angle) * this.speed + this.gravity;
-                    this.alpha -= this.decay;
-                }
+                draw() { ctx.globalAlpha = this.alpha; ctx.fillStyle = this.color; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
+                update() { this.speed *= this.friction; this.x += Math.cos(this.angle) * this.speed; this.y += Math.sin(this.angle) * this.speed + this.gravity; this.alpha -= this.decay; }
             }
             function createHeartExplosion(centerX, centerY) {
                 const color = `hsl(${Math.random() * 30 + 330}, 100%, 70%)`;
