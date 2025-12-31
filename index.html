@@ -112,13 +112,15 @@
             <button onclick="showPage('page5')" class="btn-pink mt-12 px-10 py-3 text-xs font-bold shadow-lg z-10">BACK</button>
         </div>
 
-        <div id="page-letter" class="page" style="background: url('a1.jpeg') no-repeat center center/cover;">
-            <div class="bg-white/40 backdrop-blur-md p-10 rounded-[40px] shadow-2xl max-w-[85%] border border-white/50">
-                <h2 class="text-5xl font-cursive text-pink-600 mb-6">My Dearest Aviii,</h2>
-                <p class="text-2xl text-gray-800 font-medium leading-relaxed italic mb-10" style="font-family: 'Pacifico', cursive;">"Every moment spent with you feels like a beautiful dream come true. Let's make 2026 our most magical year yet!"</p>
-                <button onclick="showPage('page6')" class="btn-pink">BACK</button>
-            </div>
-        </div>
+   <div id="page-letter" class="page" style="background: url('a1.jpeg') no-repeat center center; background-size: cover; border: none;">
+    <div class="bg-white/5 backdrop-blur-[1px] p-8 rounded-[40px] shadow-sm max-w-[85%] border border-white/10">
+        <h2 class="text-4xl font-cursive text-pink-600 mb-6 drop-shadow-md">My Dearest Aviii,</h2>
+        <p class="text-xl text-white font-medium leading-relaxed italic mb-10 drop-shadow-lg" style="font-family: 'Pacifico', cursive; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+            "Every moment spent with you feels like a beautiful dream come true. Let's make 2026 our most magical year yet!"
+        </p>
+        <button onclick="showPage('page6')" class="btn-pink shadow-2xl">BACK</button>
+    </div>
+</div>
 
         <div id="page-flowers" class="page" style="background-color: #fff5f7; border: none;">
             <div class="flex flex-row items-center justify-between w-full h-full">
@@ -290,10 +292,20 @@
         const currentTimeEl = document.getElementById('currentTime');
         const durationTimeEl = document.getElementById('durationTime');
 
-        function toggleMusic() {
-            if (audio.paused) { audio.play(); document.getElementById('playIcon').innerText = '⏸'; }
-            else { audio.pause(); document.getElementById('playIcon').innerText = '▶'; }
-        }
+       function toggleMusic() {
+    // If it's the very first time she's playing the song, start at 54 seconds
+    if (audio.currentTime === 0) {
+        audio.currentTime = 54;
+    }
+
+    if (audio.paused) {
+        audio.play();
+        document.getElementById('playIcon').innerText = '⏸';
+    } else {
+        audio.pause();
+        document.getElementById('playIcon').innerText = '▶';
+    }
+}
 
         audio.addEventListener('timeupdate', () => {
             const percent = (audio.currentTime / audio.duration) * 100;
@@ -309,5 +321,4 @@
         });
     </script>
 </body>
-
 </html>
